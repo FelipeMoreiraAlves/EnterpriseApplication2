@@ -12,5 +12,18 @@ namespace _01.Fiap.HelloWorld.Console.UI.Model
 
         public bool ArCondicionado { get; set; }
 
+        public TipoCarro Tipo { get; set; }
+
+        //Construtor
+        public Carro(int ano, double potencia) : base(ano, potencia)
+        {
+
+        }
+
+        //Sobrescrever o método abstrato da classe herdada
+        public override void Desligar()
+        {
+            System.Console.WriteLine("Virar a chave");
+        }
     }
 }

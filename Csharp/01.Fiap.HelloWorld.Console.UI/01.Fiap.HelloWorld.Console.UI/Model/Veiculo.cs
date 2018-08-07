@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace _01.Fiap.HelloWorld.Console.UI.Model
 {
-    class Veiculo
+    //classe abstrata: não pode ser instanciado 
+    //e pode conter métodos abstratos, sem implementação
+    abstract class Veiculo
     {
         private double _potencia;
+
 
         public int Ano { get; set; }
         public double Potencia
@@ -23,5 +26,19 @@ namespace _01.Fiap.HelloWorld.Console.UI.Model
 
             }
         }
+
+        public Veiculo(int ano, double potencia)
+        {
+            Ano = ano;
+            Potencia = potencia; 
+        }
+
+        //virtual permite a sobrescrita de método
+        public virtual void Acelerar()
+        {
+            System.Console.WriteLine("Veiculo acelerando");
+        }
+
+        public abstract void Desligar();
     }
 }
