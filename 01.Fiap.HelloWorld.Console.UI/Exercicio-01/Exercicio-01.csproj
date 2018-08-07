@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AA7FD5A7-BE6D-4289-B838-21809CE91FCD}</ProjectGuid>
+    <ProjectGuid>{059C9179-330B-4C8D-83FA-1870D8729815}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Exercicio_01</RootNamespace>
     <AssemblyName>Exercicio-01</AssemblyName>
@@ -42,14 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Conta.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
