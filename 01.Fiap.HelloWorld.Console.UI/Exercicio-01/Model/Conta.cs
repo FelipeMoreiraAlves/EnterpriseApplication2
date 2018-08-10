@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exercicio_01.Model
+namespace Fiap.Banco.Model
 {
     abstract class Conta
     {
@@ -17,6 +17,8 @@ namespace Exercicio_01.Model
         public decimal Saldo { get; set; }
 
 
+        public abstract double Depositar(decimal valor);
 
+        public abstract double Retirar(decimal valor);
     }
 }
