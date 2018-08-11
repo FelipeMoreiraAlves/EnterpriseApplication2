@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Fiap.Banco.Model
 {
+    //Classe abstrata:
+    //1 - Não pode ser instanciada 
+    //2 - Pode conter métodos abstratos (sem implementação)
     abstract class Conta
     {
+        //propriedadess (gets e sets)
         public int Agencia{get; set; }
 
         public int Numero { get; set; }
@@ -16,9 +20,9 @@ namespace Fiap.Banco.Model
 
         public decimal Saldo { get; set; }
 
+        //metodos
+        public abstract void Depositar(decimal valor);
 
-        public abstract double Depositar(decimal valor);
-
-        public abstract double Retirar(decimal valor);
+        public abstract void Retirar(decimal valor);
     }
 }

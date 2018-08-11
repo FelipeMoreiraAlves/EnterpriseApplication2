@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Exercicio_01.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +7,25 @@ using System.Threading.Tasks;
 
 namespace Fiap.Banco.Model
 {
-    class ContaCorrente : Conta
+    //sealed : classe não pode ser herdada
+    sealed class ContaCorrente : Conta
     {
+        //Propriedades
         public TipoConta Tipo { get; set; }
 
-        public double Depositar(decimal valor)
+        //Métodos
+        public override void Depositar(decimal valor)
         {
-            valor += valor;
+            Saldo += valor;
+        }
+
+        public override void Retirar(decimal valor)
+        {
+            if (Saldo < valor && Tipo == TipoConta.Comum)
+            {
+                throw new Exception("Saldo insuficiente");
+            }
+            Saldo -= valor;
         }
     }
 }

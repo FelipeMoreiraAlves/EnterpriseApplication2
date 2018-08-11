@@ -8,6 +8,6 @@ namespace Exercicio_01.Model
 {
     interface IContaInvestimento
     {
-        public double CalculaRetornoInvestimento();
+        public decimal CalculaRetornoInvestimento();
     }
 }

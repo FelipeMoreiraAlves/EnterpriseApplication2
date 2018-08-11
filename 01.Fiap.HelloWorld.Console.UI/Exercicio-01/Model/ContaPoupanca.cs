@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fiap.Banco.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,26 +7,43 @@ using System.Threading.Tasks;
 
 namespace Exercicio_01.Model
 {
-    class ContaPoupanca
+    class ContaPoupanca : Conta, IContaInvestimento
     {
-        public double CalculaRetornoInvestimento()
+        //propriedades
+        public decimal Taxa { get; set; }
+
+        //Campos, fields (atributos)
+        private readonly decimal _rendimento;
+
+        //Construtor
+        public ContaPoupanca(decimal rendimento)
         {
-            return 0;
+            _rendimento = rendimento;
         }
 
-        public int ContaPoupanca()
+        //Métodos
+        public decimal Rendimento
         {
-            return 0;
+            get { return _rendimento; }
+        }
+        public decimal CalculaRetornoInvestimento()
+        {
+            return Saldo * _rendimento;
         }
 
-        public double Depositar()
+        public override void Depositar(decimal valor)
         {
-            return 0;
+            Saldo += valor;
         }
 
-        public double Retirar()
+        public override void Retirar(decimal valor)
         {
-            return 0;
+            if (Saldo < valor + Taxa)
+            {
+                throw new Exception("Saldo insuficiente");
+            
+            }
+            Saldo -= valor;
         }
     }
 }
