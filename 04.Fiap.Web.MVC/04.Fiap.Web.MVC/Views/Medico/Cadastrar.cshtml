@@ -1,0 +1,41 @@
+﻿@model _04.Fiap.Web.MVC.Models.Medico
+@{
+    ViewBag.Title = "Cadastrar";
+}
+
+<h2>Cadastrar</h2>
+
+@if(TempData["msg"] != null)
+{
+<div class="alert alert-success">
+    @TempData["msg"]
+</div>
+
+}
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(churros => churros.Crm)
+        @Html.TextBoxFor(m => m.Crm, new {@class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(nome => nome.Nome)
+        @Html.TextBoxFor(txtNome => txtNome.Nome, new {@class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(desc => desc.Descricao)
+        @Html.TextAreaFor(desc => desc.Descricao, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(sal => sal.Salario)
+        @Html.TextBoxFor(sal => sal.Salario, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(ativo => ativo.Ativo)
+        @Html.CheckBoxFor(ativo => ativo.Ativo)
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Cadastrar" /> 
+    </div>
+}
