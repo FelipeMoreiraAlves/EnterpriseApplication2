@@ -1,0 +1,28 @@
+﻿@model List<_06.Fiap.Web.MVC.Models.Animal>
+@{
+    ViewBag.Title = "Listar";
+}
+
+<h2>Listar</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Raça</th>
+        <th>Castrado</th>
+        <th>Peso</th>
+        <th>Ação</th>
+    </tr>
+    @foreach (var animal in Model)
+    {
+        <tr>
+            <td>@animal.AnimalId</td>
+            <td>@animal.Nome</td>
+            <td>@animal.Raca</td>
+            <td>@(animal.Castrado ? "Castrado" : "Não castrado")</td>
+            <td>@animal.Peso</td>
+            <td>@Html.ActionLink("Editar", "Alterar", new { id = animal.AnimalId })</td>
+        </tr>
+    }
+</table>

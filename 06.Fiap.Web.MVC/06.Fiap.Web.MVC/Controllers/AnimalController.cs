@@ -2,6 +2,7 @@
 using _06.Fiap.Web.MVC.Persistencia;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -31,9 +32,25 @@ namespace _06.Fiap.Web.MVC.Controllers
         [HttpGet]
         public ActionResult Listar()
         {
-            //Envia a lista de médicos para a tela
-            _context.Animais.ToList();
-            return View();
+            //Envia a lista para a tela
+            return View(_context.Animais.ToList());
+        }
+
+        [HttpGet]
+        public ActionResult Alterar(int id)
+        {
+            //buscar no banco de dados
+            var animal = _context.Animais.Find(id);
+            //retorna a página com os dados do animal
+            return View(animal);
+        }
+
+        public ActionResult Aterar(Animal animal)
+        {
+            _context.Entry(animal).State = EntityState.Modified;
+            _context.SaveChanges();
+            TempData["msg"] = "Animal Atualizado";
+            return RedirectToAction("Listar");
         }
     }
 }
