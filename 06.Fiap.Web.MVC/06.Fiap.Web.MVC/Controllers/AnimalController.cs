@@ -29,6 +29,8 @@ namespace _06.Fiap.Web.MVC.Controllers
             return RedirectToAction("Cadastrar");
         }
 
+      
+
         [HttpGet]
         public ActionResult Listar()
         {
@@ -45,12 +47,29 @@ namespace _06.Fiap.Web.MVC.Controllers
             return View(animal);
         }
 
-        public ActionResult Aterar(Animal animal)
+        [HttpPost]
+        public ActionResult Alterar(Animal animal)
         {
             _context.Entry(animal).State = EntityState.Modified;
             _context.SaveChanges();
             TempData["msg"] = "Animal Atualizado";
             return RedirectToAction("Listar");
+        }
+        [HttpPost]
+        public ActionResult Apagar(int id)
+        {
+            var animal = _context.Animais.Find(id);
+            _context.Entry(animal).State = EntityState.Deleted;
+            _context.SaveChanges();
+            TempData["msg"] = "Animal Apagado";
+            return RedirectToAction("Listar");
+        }
+        [HttpGet]
+        public ActionResult Pesquisar(string nome)
+        {
+            var lista = _context.Animais.Where(a => a.Nome.Contains(nome)).ToList();
+
+            return View("Listar", lista);
         }
     }
 }

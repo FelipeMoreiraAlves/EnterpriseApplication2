@@ -2,27 +2,77 @@
 @{
     ViewBag.Title = "Listar";
 }
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["msg"]
+    </div>
 
+}
 <h2>Listar</h2>
 
-<table class="table table-bordered">
+@using (Html.BeginForm("Pesquisar", "Animal", FormMethod.Get))
+{
+    @Html.Label("Nome: ")
+    @Html.TextBox("Nome")
+    <input type="submit" value="Pesquisar" class="btn btn-primary btn-xs"/>
+}
+
+<table class="table table-striped">
     <tr>
-        <th>Id</th>
-        <th>Nome</th>
-        <th>Raça</th>
-        <th>Castrado</th>
-        <th>Peso</th>
-        <th>Ação</th>
+        <th class="text-center">Id</th>
+        <th class="text-center">Nome</th>
+        <th class="text-center">Raça</th>
+        <th class="text-center">Castrado</th>
+        <th class="text-center">Peso</th>
+        <th class="text-center">Ação</th>
     </tr>
     @foreach (var animal in Model)
     {
-        <tr>
+        <tr class="text-center">
             <td>@animal.AnimalId</td>
             <td>@animal.Nome</td>
             <td>@animal.Raca</td>
             <td>@(animal.Castrado ? "Castrado" : "Não castrado")</td>
             <td>@animal.Peso</td>
-            <td>@Html.ActionLink("Editar", "Alterar", new { id = animal.AnimalId })</td>
+            <td>
+
+                <table>
+                    <tr>
+                        <td>@Html.ActionLink("Editar", "Alterar", new { id = animal.AnimalId }, new { @class = "btn btn-primary" })</td>
+                        <td>
+                            <button onclick="codigoAnimal.value = @animal.AnimalId" type="submit" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                                Remover
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
         </tr>
     }
 </table>
+
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Confirmação</h4>
+            </div>
+            <div class="modal-body">
+                Excluir animal ?
+            </div>
+            <div class="modal-footer">
+                @using (Html.BeginForm("Apagar", "Animal"))
+                {
+                    <input type="hidden" name="id" id="codigoAnimal" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger">Remover</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
