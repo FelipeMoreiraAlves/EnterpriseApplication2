@@ -1,0 +1,37 @@
+﻿@model Fiap07.Web.MVC.Models.Jogador
+@{
+    ViewBag.Title = "Cadastrar";
+}
+
+<h2>Cadastrar Time</h2>
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["msg"]
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    <div class="container">
+
+        <div class="container">
+            <div class="form-group">
+                @Html.LabelFor(a => a.Nome)
+                @Html.TextBoxFor(a => a.Nome, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.DataNascimento)
+                @Html.TextBoxFor(a => a.DataNascimento, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.Time)
+                @Html.DropDownListFor(a => a.TimeId,
+               ViewBag.times as SelectList, "",
+               new { @class = "form-control" })
+            </div>
+        </div>
+        
+        <input type="submit" class="btn btn-primary" value="Cadastrar" />
+    </div>
+}

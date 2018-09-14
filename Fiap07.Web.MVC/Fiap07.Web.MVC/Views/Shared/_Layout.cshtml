@@ -17,10 +17,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Brasfoot", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Time <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Cadastrar Time","Cadastrar", "Time")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jogador<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Cadastrar Jogador","Cadastrar", "Jogador")</li>
+                            <li>@Html.ActionLink("Lista de Jogadores","Cadastrar", "Jogador")</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>

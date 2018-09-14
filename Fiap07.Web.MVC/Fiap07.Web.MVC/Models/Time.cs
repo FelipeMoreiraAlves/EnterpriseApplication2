@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -9,6 +10,7 @@ namespace Fiap07.Web.MVC.Models
     {
         public int TimeId { get; set; }
 
+        [Display(Name = "Nome do Time")]
         public string  Nome { get; set; }
 
         public bool Mundial { get; set; }

@@ -14,6 +14,17 @@
 @using (Html.BeginForm())
 {
     <div class="container">
+
+        <div class="container">
+            <div class="form-group">
+                @Html.LabelFor(a => a.Nome)
+                @Html.TextBoxFor(a => a.Nome, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.CheckBoxFor(a => a.Mundial)
+                @Html.LabelFor(a => a.Mundial)
+            </div>
+        </div>
         <fieldset>
             <div class="container">
                 <legend>Tecnico</legend>
@@ -27,14 +38,6 @@
                 </div>
             </div>
         </fieldset>
-        <div class="form-group">
-            @Html.LabelFor(a => a.Nome)
-            @Html.TextBoxFor(a => a.Nome, new { @class = "form-control" })
-        </div>
-        <div class="form-group">
-            @Html.CheckBoxFor(a => a.Mundial)
-            @Html.LabelFor(a => a.Mundial)
-        </div>
         <input type="submit" class="btn btn-primary" value="Cadastrar" />
     </div>
 }
