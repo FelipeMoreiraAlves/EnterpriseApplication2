@@ -15,15 +15,32 @@ namespace Fiap07.Web.MVC.Controllers
         [HttpGet]
         public ActionResult Cadastrar()
         {
-            var lista = _context.Times.ToList();
-
-            ViewBag.times = new SelectList(lista, "TimeId", "Nome");
+            CarregarComboTimes();
 
             return View();
         }
+
+        [HttpGet]
+        public ActionResult Buscar(int? codigo)
+        {
+            //Pesquisa os jogadores pelo time
+            var lista = _context.Jogadores.Include("Time")
+                .Where(j => j.TimeId == codigo || codigo == null).ToList();
+            CarregarComboTimes();
+            //Página e a lista de jogadores
+            return View("Listar", lista);
+        }
+        private void CarregarComboTimes()
+        {
+            var lista = _context.Times.ToList();
+
+            ViewBag.times = new SelectList(lista, "TimeId", "Nome");
+        }
+
         [HttpGet]
         public ActionResult Listar()
         {
+            CarregarComboTimes();
             var lista = _context.Jogadores.Include("Time").ToList();
             return View(lista);
         }

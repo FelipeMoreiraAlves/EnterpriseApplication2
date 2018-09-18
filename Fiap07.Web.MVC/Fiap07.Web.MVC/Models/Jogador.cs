@@ -15,6 +15,8 @@ namespace Fiap07.Web.MVC.Models
 
         public DateTime DataNascimento { get; set; }
 
+        public Posicao? Posicao { get; set; }
+
         public Time Time { get; set; }
 
         public int TimeId { get; set; }
