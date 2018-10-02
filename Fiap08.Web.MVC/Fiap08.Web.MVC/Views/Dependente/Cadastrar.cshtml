@@ -18,9 +18,14 @@
 
         <h1>Cadastrar Dependente</h1>
         <div class="form-group">
-            
+            @Html.LabelFor(r => r.Nome)
+            @Html.TextBoxFor(r => r.Nome, new { @class = "form-control", @placeholder = "Digite o nome do Dependente" })
         </div>
-
+        <div class="form-group">
+            @Html.LabelFor(r => r.Nome)
+            @Html.TextBoxFor(r => r.Responsavel, new { @class = "form-control", @placeholder = "Digite o nome do Dependente" })
+        </div>
+        <input type="submit" value="Cadastrar" class="btn btn-primary"/>
     </div>
 
 }
