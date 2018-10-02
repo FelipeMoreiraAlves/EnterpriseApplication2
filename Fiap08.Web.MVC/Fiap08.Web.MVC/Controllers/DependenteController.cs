@@ -1,4 +1,5 @@
 ﻿using Fiap08.Web.MVC.Models;
+using Fiap08.Web.MVC.Persistencia;
 using Fiap08.Web.MVC.Units;
 using System;
 using System.Collections.Generic;
@@ -8,20 +9,17 @@ using System.Web.Mvc;
 
 namespace Fiap08.Web.MVC.Controllers
 {
-    public class ResponsavelController : Controller
+    public class DependenteController : Controller
     {
         private UnitOfWork _unit = new UnitOfWork();
-
-        // GET: Responsavel
-        public ActionResult Cadastrar(Responsavel responsavel)
+        // GET: Dependente
+        public ActionResult Cadastrar(Dependente dependente)
         {
-            _unit.ResponsavelRepository.Cadastrar(responsavel);
+            _unit.DependenteRepository.Cadastrar(dependente);
             _unit.Salvar();
-            TempData["msg"] = "Responsável registrado";
+            TempData["msg"] = "Dependente cadastrado";
             return RedirectToAction("Cadastrar");
         }
-
-        //Liberar os recursos (conexão com o banco)
 
         protected override void Dispose(bool disposing)
         {

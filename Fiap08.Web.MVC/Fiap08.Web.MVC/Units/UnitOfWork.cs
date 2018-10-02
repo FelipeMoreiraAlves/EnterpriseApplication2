@@ -13,6 +13,7 @@ namespace Fiap08.Web.MVC.Units
 
         private IResponsavelRepository _responsavelRepository;
 
+        private IDependenteRepository _dependenteRespository;
         public IResponsavelRepository ResponsavelRepository
         {
             get
@@ -22,6 +23,18 @@ namespace Fiap08.Web.MVC.Units
                     _responsavelRepository = new ResponsavelRepository(_context);
                 }
                 return _responsavelRepository;
+            }
+        }
+
+        public IDependenteRepository DependenteRepository
+        {
+            get
+            {
+                if(_dependenteRespository == null)
+                {
+                    _dependenteRespository = new DependenteRepository(_context);
+                }
+                return _dependenteRespository;
             }
         }
 
