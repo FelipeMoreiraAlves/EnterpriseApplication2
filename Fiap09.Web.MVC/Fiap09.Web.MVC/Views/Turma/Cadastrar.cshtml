@@ -1,0 +1,25 @@
+﻿@model Fiap09.Web.MVC.Models.Turma
+@{
+    ViewBag.Title = "Cadastrar";
+}
+
+<h2>Cadastrar</h2>
+
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["msg"]
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(t => t.Nome)
+        @Html.TextBoxFor(t => t.Nome, new { @class = "form-control"})
+    </div>
+    <input type="submit" value="Cadastrar" class="btn btn-primary" />
+}
+
+
+
